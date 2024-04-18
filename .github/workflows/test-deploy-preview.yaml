@@ -1,0 +1,69 @@
+name: Run Tests and Deploy Preview Branch
+
+on:
+  pull_request:
+    branches:
+      - dev
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_DOMAIN: bossrod.vercel.app
+
+jobs:
+  test-and-deploy-preview:
+    if: false # TODO: Temporary disabled until we need this.
+    # if: ${{ contains('dev', github.event.pull_request.base.ref) }}
+    runs-on: ubuntu-latest
+    environment:
+      name: Preview
+      url: ${{ steps.vercel_deploy.outputs.PR_PREVIEW_URL }}
+    steps:
+      - name: Checkout ${{ github.ref }} branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Pull Vercel Environment Variables
+        run: |
+          pnpm vercel --token=${{ env.VERCEL_TOKEN }} env pull --environment=preview --git-branch=dev .env
+          echo "success=true" >> $GITHUB_ENV
+
+      - name: Run Linting Checks
+        if: env.success == 'true'
+        run: pnpm run check:all
+
+      - name: Run Tests with Coverage
+        if: env.success == 'true'
+        run: pnpm run test:coverage
+
+      - name: Deploy to Vercel
+        if: env.success == 'true'
+        id: vercel_deploy
+        run: |
+          vercel_url="preview-${{ github.event.pull_request.number }}-$VERCEL_DOMAIN"
+
+          pnpm vercel --token=${{ env.VERCEL_TOKEN }} pull --yes --environment=preview
+          pnpm vercel --token=${{ env.VERCEL_TOKEN }} build
+          pnpm vercel --token=${{ env.VERCEL_TOKEN }} deploy --prebuilt > domain.txt
+          pnpm vercel --token=${{ env.VERCEL_TOKEN }} --scope=bossrod alias set `cat domain.txt` $vercel_url
+
+          echo "PR_PREVIEW_URL=https://${vercel_url}" >> $GITHUB_OUTPUT

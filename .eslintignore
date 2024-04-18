@@ -1,0 +1,12 @@
+node_modules/
+
+coverage/
+
+*.config.js
+*.config.ts
+*.config.mjs
+*.config.cjs
+
+*-lock.json
+*-lock.yaml
+*.lock

@@ -1,0 +1,114 @@
+name: Run Tests and Deploy Core Branch
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_DOMAIN: bossrod.vercel.app
+
+jobs:
+  test-and-deploy-dev:
+    if: ${{ contains('refs/heads/dev', github.ref) }}
+    runs-on: ubuntu-latest
+    environment:
+      name: Dev
+      url: ${{ steps.vercel_deploy.outputs.VERCEL_URL }}
+    steps:
+      - name: Checkout dev branch
+        uses: actions/checkout@v3
+        with:
+          ref: dev
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Pull Vercel Environment Variables
+        run: |
+          pnpm vercel --token=${{ env.VERCEL_TOKEN }} env pull --environment=preview --git-branch=dev .env
+          echo "success=true" >> $GITHUB_ENV
+
+      - name: Run Linting Checks
+        if: env.success == 'true'
+        run: pnpm run check:all
+
+      - name: Run Tests with Coverage
+        if: env.success == 'true'
+        run: pnpm run test:coverage
+
+      - name: Deploy to Vercel
+        if: env.success == 'true'
+        id: vercel_deploy
+        run: |
+          vercel_url="dev-$VERCEL_DOMAIN"
+
+          pnpm vercel --token=${{ secrets.VERCEL_TOKEN }} pull --yes --environment=preview --git-branch=dev
+          pnpm vercel --token=${{ secrets.VERCEL_TOKEN }} build
+          pnpm vercel --token=${{ secrets.VERCEL_TOKEN }} deploy --prebuilt > domain.txt
+          pnpm vercel --token=${{ secrets.VERCEL_TOKEN }} --scope=bossrod alias set `cat domain.txt` $vercel_url
+
+          echo "VERCEL_URL=https://${vercel_url}" >> $GITHUB_OUTPUT
+
+  test-and-deploy-production:
+    if: ${{ contains('refs/heads/main', github.ref) }}
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: ${{ steps.vercel_deploy.outputs.VERCEL_URL }}
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Pull Vercel Environment Variables
+        run: |
+          pnpm vercel --token=${{ env.VERCEL_TOKEN }} env pull --environment=production .env
+          echo "success=true" >> $GITHUB_ENV
+
+      - name: Run Linting Checks
+        if: env.success == 'true'
+        run: pnpm run check:all
+
+      - name: Run Tests with Coverage
+        if: env.success == 'true'
+        run: pnpm run test:coverage
+
+      - name: Deploy to Vercel
+        if: env.success == 'true'
+        id: vercel_deploy
+        run: |
+          vercel_url="$VERCEL_DOMAIN"
+
+          pnpm vercel --token=${{ secrets.VERCEL_TOKEN }} pull --yes --environment=production
+          pnpm vercel --token=${{ secrets.VERCEL_TOKEN }} build --prod
+          pnpm vercel --token=${{ secrets.VERCEL_TOKEN }} deploy --prebuilt --prod > domain.txt
+          pnpm vercel --token=${{ secrets.VERCEL_TOKEN }} --scope=bossrod alias set `cat domain.txt` $vercel_url
+
+          echo "VERCEL_URL=https://${vercel_url}" >> $GITHUB_OUTPUT
