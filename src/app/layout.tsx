@@ -72,6 +72,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Link href="/sample" className="font-montserrat text-2xl">
             Sample
           </Link>
+          <Link href="/rsc-and-server-action" className="font-montserrat text-2xl">
+            RSC and Server Action
+          </Link>
         </div>
         <Providers>{children}</Providers>
       </body>

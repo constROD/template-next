@@ -12,7 +12,7 @@
   "author": "Rodrick Alcantara <rialcantara21@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "clean": "rm -rf .next/ node_modules/ && pnpm i",
     "build": "next build",
     "start": "next start",
