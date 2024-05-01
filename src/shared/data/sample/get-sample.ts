@@ -1,4 +1,4 @@
-import { type Sample } from '../types/sample';
+import { type Sample } from '../../types/sample';
 
 export type GetSampleDataArgs = {
   id: number;

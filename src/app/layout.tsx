@@ -66,14 +66,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={`${fontMontserrat.variable} ${fontInter.variable}`}>
         <div className="flex gap-5">
-          <Link href="/" className="font-inter text-2xl">
+          <Link href="/" className="font-inter text-xl underline">
             Home
           </Link>
-          <Link href="/sample" className="font-montserrat text-2xl">
-            Sample
+          <Link href="/sample" className="font-montserrat text-xl underline">
+            Sample (using TanStack React Query and Server Action)
           </Link>
-          <Link href="/rsc-and-server-action" className="font-montserrat text-2xl">
-            RSC and Server Action
+          <Link href="/products" className="font-montserrat text-xl underline">
+            Products (using RSC and Server Action Only)
           </Link>
         </div>
         <Providers>{children}</Providers>

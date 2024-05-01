@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "name": "Product 2",
+      "price": 100,
+      "id": "6928acc7-9418-4ddc-9957-07435a74ed67"
+    },
+    {
+      "name": "Product 3",
+      "price": 200,
+      "id": "c12f5608-c134-4889-9dd1-4fe9ffac957a"
+    },
+    {
+      "name": "Product 4asd",
+      "price": 1230,
+      "id": "4ccf36b9-84b1-4324-a7a3-3c71d33b6c99"
+    },
+    {
+      "name": "Product 5123",
+      "price": 123123,
+      "id": "d15433b6-60a2-49d1-8733-af5d65242646"
+    }
+  ]
+}

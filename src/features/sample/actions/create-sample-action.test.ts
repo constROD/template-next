@@ -1,4 +1,4 @@
-import { type CreateSampleDataArgs } from '@/shared/data/create-sample';
+import { type CreateSampleDataArgs } from '@/shared/data/sample/create-sample';
 import { faker } from '@faker-js/faker';
 import { describe, expect, it, vi } from 'vitest';
 import { createSampleAction } from './create-sample-action';

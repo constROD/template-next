@@ -40,3 +40,6 @@ next-env.d.ts
 
 *-lock.json
 *.lock
+
+# TODO: Remove this db.json before production
+# db.json

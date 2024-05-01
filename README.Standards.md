@@ -15,10 +15,12 @@
 
 - `src/app` - for app router.
   - `src/app/<route-name>/page.tsx` - for route page component.
+  - `src/app/<route-name>/_components` - for route page components.
+  - `src/app/<route-name>/_actions` - for route page actions.
 
 ### Features
 
-- `src/features` - for feature modules.
+- `src/features` - for feature modules. **(Only if needed)**
   - `src/features/<feature-name>` - for feature module.
     - `src/features/<feature-name>/actions` - for server actions.
     - `src/features/<feature-name>/components` - for components.
@@ -40,18 +42,20 @@
 
 ### Sample Flow(s)
 
-1. Creating new feature with API/DB calls using **RSC**.
-   1. Create a new feature module in `src/features`.
+#### Creating new feature with API/DB calls using `RSC and Server Action`.
+   1. Create `src/app/<route-name>/_components` and `src/app/<route-name>/_actions` without creating a feature module.
+      1. Create a new feature module in `src/features`. **(Only if needed)**
    2. Create a new page component in `src/app`.
    3. Create a new shared component in `src/shared/components`. **(Only if needed)**
    4. Create a data access layer in `src/shared/data`. 
       1. Create a function for fetching data through API or directly to DB.
-   5. Create a server action in `src/features/<feature-name>/actions`.
+   5. Create a server action in `src/app/<route-name>/_actions` or `src/features/<feature-name>/actions`.
       1. Create a function with `use server` directive for calling the data access layer. (normally, it will be a WRITE operation such as `create`, `update`, `delete`).
    6. Lastly, you can call data access layer directly from the RSC component or RSC page component.
 
-2. Creating new feature with API/DB calls using `TanStack React Query`.
-   1. Create a new feature module in `src/features`.
+#### Creating new feature with API/DB calls using `TanStack React Query`.
+   1. Create `src/app/<route-name>/_components` and `src/app/<route-name>/_actions` without creating a feature module.
+      1. Create a new feature module in `src/features`. **(Only if needed)**
    2. Create a new page component in `src/app`.
    3. Create a new shared component in `src/shared/components`. **(Only if needed)**
    4. Create a data access layer in `src/shared/data`. 
