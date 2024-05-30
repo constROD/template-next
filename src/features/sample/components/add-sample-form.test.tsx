@@ -4,27 +4,27 @@ import { describe, expect, it, vi } from 'vitest';
 import * as createSampleActionModule from '../actions/create-sample-action';
 import { AddSampleForm } from './add-sample-form';
 
-describe('AddSampleForm', () => {
-  const renderComponentUnderTest = () => {
-    const view = render(<AddSampleForm />);
+const renderComponentUnderTest = () => {
+  const view = render(<AddSampleForm />);
 
-    const events = {
-      addSampleAction: vi.spyOn(createSampleActionModule, 'createSampleAction'),
-    };
-    const elements = {
-      submitButton: () => screen.getByRole('button', { name: 'Add Sample' }),
-      emailInput: () => screen.getByLabelText('Email'),
-      nameInput: () => screen.getByLabelText('Name'),
-      descriptionInput: () => screen.getByLabelText('Description'),
-    };
-
-    return {
-      events,
-      elements,
-      ...view,
-    };
+  const events = {
+    addSampleAction: vi.spyOn(createSampleActionModule, 'createSampleAction'),
+  };
+  const elements = {
+    submitButton: () => screen.getByRole('button', { name: 'Add Sample' }),
+    emailInput: () => screen.getByLabelText('Email'),
+    nameInput: () => screen.getByLabelText('Name'),
+    descriptionInput: () => screen.getByLabelText('Description'),
   };
 
+  return {
+    events,
+    elements,
+    ...view,
+  };
+};
+
+describe('AddSampleForm', () => {
   it('should render properly', () => {
     const { elements } = renderComponentUnderTest();
 
