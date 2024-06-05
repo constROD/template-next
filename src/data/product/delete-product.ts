@@ -1,5 +1,5 @@
-import { type DB } from '@/shared/types/db';
-import { wait } from '@/shared/utils/wait';
+import { type DB } from '@/types/db';
+import { wait } from '@/utils/wait';
 import fs from 'fs/promises';
 
 export async function deleteProduct(id: string) {

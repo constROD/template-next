@@ -1,7 +1,7 @@
 'use client';
 
-import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useEffect } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { addProductAction } from '../_actions/add-product-action';

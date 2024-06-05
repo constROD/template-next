@@ -1,4 +1,4 @@
-import { getProducts } from '@/shared/data/product/get-products';
+import { getProducts } from '@/data/product/get-products';
 import { AddProductButton } from './_components/add-product-button';
 import { DeleteProductButton } from './_components/delete-product-button';
 import { EditProductButton } from './_components/edit-product-button';

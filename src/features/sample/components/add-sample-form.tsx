@@ -1,11 +1,11 @@
 'use client';
 
-import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
-import { useSampleStore } from '../../../shared/stores/use-sample-store';
+import { useSampleStore } from '../../../stores/use-sample-store';
 import { createSampleAction } from '../actions/create-sample-action';
 
 export const addSampleSchema = z.object({

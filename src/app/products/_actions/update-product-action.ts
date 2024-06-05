@@ -1,6 +1,6 @@
 'use server';
 
-import { updateProduct } from '@/shared/data/product/update-product';
+import { updateProduct } from '@/data/product/update-product';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 

@@ -1,13 +1,13 @@
 'use client';
 
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/shared/components/ui/dialog';
+} from '@/components/ui/dialog';
 import { useState } from 'react';
 import { AddProductForm } from './add-product-form';
 

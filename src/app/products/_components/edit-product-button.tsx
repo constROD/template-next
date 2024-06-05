@@ -1,14 +1,14 @@
 'use client';
 
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/shared/components/ui/dialog';
-import { type Product } from '@/shared/types/product';
+} from '@/components/ui/dialog';
+import { type Product } from '@/types/product';
 import { useState } from 'react';
 import { EditProductForm } from './edit-product-form';
 
