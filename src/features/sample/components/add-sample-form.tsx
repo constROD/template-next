@@ -2,10 +2,10 @@
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useSampleStore } from '@/hooks/stores/use-sample-store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
-import { useSampleStore } from '../../../stores/use-sample-store';
 import { createSampleAction } from '../actions/create-sample-action';
 
 export const addSampleSchema = z.object({

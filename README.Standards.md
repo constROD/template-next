@@ -33,35 +33,11 @@
     - `src/components/ui/*` - for ui components (`button`, `input` & etc).
   - `src/constants` - for constants.
   - `src/data` - for data access layer. (e.g. `api`, `database`).
+  - `src/hooks` - for custom hooks.
+    - `src/hooks/use-<hook-name>.ts` - for custom hook.
+    - `src/hooks/mutation/use-<hook-name>.ts` - for `react-query` mutation. **(Only if needed)**
+    - `src/hooks/query/use-<hook-name>.ts` - for `react-query` query. **(Only if needed)**
+    - `src/hooks/stores/use-<hook-name>.ts` - for zustand stores.
   - `src/lib` - for 3rd party integrations libraries.
-  - `src/mutation` - for `react-query` mutation. **(Only if needed)**
-  - `src/query` - for `react-query` query. **(Only if needed)**
-  - `src/stores` - for zustand stores.
   - `src/types` - for types.
   - `src/utils` - for utilities.
-
-### Sample Flow(s)
-
-#### Creating new feature with API/DB calls using `RSC and Server Action`.
-   1. Create `src/app/<route-name>/_components` and `src/app/<route-name>/_actions` without creating a feature module.
-      1. Create a new feature module in `src/features`. **(Only if needed)**
-   2. Create a new page component in `src/app`.
-   3. Create a new shared component in `src/components`. **(Only if needed)**
-   4. Create a data access layer in `src/data`. 
-      1. Create a function for fetching data through API or directly to DB.
-   5. Create a server action in `src/app/<route-name>/_actions` or `src/features/<feature-name>/actions`.
-      1. Create a function with `use server` directive for calling the data access layer. (normally, it will be a WRITE operation such as `create`, `update`, `delete`).
-   6. Lastly, you can call data access layer directly from the RSC component or RSC page component.
-
-#### Creating new feature with API/DB calls using `TanStack React Query`.
-   1. Create `src/app/<route-name>/_components` and `src/app/<route-name>/_actions` without creating a feature module.
-      1. Create a new feature module in `src/features`. **(Only if needed)**
-   2. Create a new page component in `src/app`.
-   3. Create a new shared component in `src/components`. **(Only if needed)**
-   4. Create a data access layer in `src/data`. 
-      1. Create a function for fetching data through API or directly to DB.
-   5. Create a query in `src/query`.
-      1. Create a query function with `useQuery` from `react-query`. (e.g. `useSamplesQuery`).
-   6. Create a mutation in `src/mutation`.
-      1. Create a mutation function with `useMutation` from `react-query`. (e.g. `useSampleCreateMutation`).
-   7. Lastly, you can call query/mutation directly from the client component or client page component using `use-client` directive.
