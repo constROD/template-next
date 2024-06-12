@@ -2,12 +2,12 @@
   "products": [
     {
       "name": "Product 2",
-      "price": 123123,
+      "price": 123123123,
       "id": "6928acc7-9418-4ddc-9957-07435a74ed67"
     },
     {
       "name": "Product 3",
-      "price": 200,
+      "price": 2123123,
       "id": "c12f5608-c134-4889-9dd1-4fe9ffac957a"
     },
     {
@@ -19,6 +19,11 @@
       "name": "Product 5123",
       "price": 123123,
       "id": "d15433b6-60a2-49d1-8733-af5d65242646"
+    },
+    {
+      "name": "asdasd",
+      "price": 123,
+      "id": "0c34738b-8e17-48e9-9dd4-897cd6b5a76b"
     }
   ]
 }
