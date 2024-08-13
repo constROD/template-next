@@ -1,5 +1,11 @@
 # Template Next by bossROD
 
+## Clone
+
+```bash
+npx degit https://github.com/constROD/template-next.git
+```
+
 ## Prerequisites
 
 - Download extension [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) in your VSCode.
