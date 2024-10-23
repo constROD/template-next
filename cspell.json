@@ -6,6 +6,7 @@
     "commitlint",
     "pnpm",
     "tanstack",
+    "testid",
     "Todos",
     "zustand"
   ],

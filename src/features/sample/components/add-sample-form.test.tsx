@@ -12,9 +12,9 @@ const renderComponentUnderTest = () => {
   };
   const elements = {
     submitButton: () => screen.getByRole('button', { name: 'Add Sample' }),
-    emailInput: () => screen.getByLabelText('Email'),
-    nameInput: () => screen.getByLabelText('Name'),
-    descriptionInput: () => screen.getByLabelText('Description'),
+    emailInput: () => screen.getByTestId('Email'),
+    nameInput: () => screen.getByTestId('Name'),
+    descriptionInput: () => screen.getByTestId('Description'),
   };
 
   return {

@@ -17,14 +17,8 @@ export function AddProductForm({ closeModal }: { closeModal: () => void }) {
 
   return (
     <form action={action} className="flex flex-col gap-2">
-      <Input aria-label="Name" label="Name" name="name" error={error?.name?.toString()} />
-      <Input
-        aria-label="Price"
-        label="Price"
-        name="price"
-        type="number"
-        error={error?.price?.toString()}
-      />
+      <Input label="Name" name="name" error={error?.name?.toString()} />
+      <Input label="Price" name="price" type="number" error={error?.price?.toString()} />
       <SubmitButton />
     </form>
   );

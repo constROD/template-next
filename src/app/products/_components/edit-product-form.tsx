@@ -24,15 +24,8 @@ export function EditProductForm({ product, closeModal }: EditProductFormProps) {
   return (
     <form action={action} className="flex flex-col gap-2">
       <input type="hidden" name="id" value={product.id} />
+      <Input label="Name" name="name" error={error?.name?.toString()} defaultValue={product.name} />
       <Input
-        aria-label="Name"
-        label="Name"
-        name="name"
-        error={error?.name?.toString()}
-        defaultValue={product.name}
-      />
-      <Input
-        aria-label="Price"
         label="Price"
         name="price"
         type="number"

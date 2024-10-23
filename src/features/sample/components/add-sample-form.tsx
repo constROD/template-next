@@ -35,20 +35,9 @@ export function AddSampleForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <Input label="Email" error={formState.errors.email?.message} {...register('email')} />
+      <Input label="Name" error={formState.errors.name?.message} {...register('name')} />
       <Input
-        aria-label="Email"
-        label="Email"
-        error={formState.errors.email?.message}
-        {...register('email')}
-      />
-      <Input
-        aria-label="Name"
-        label="Name"
-        error={formState.errors.name?.message}
-        {...register('name')}
-      />
-      <Input
-        aria-label="Description"
         label="Description"
         error={formState.errors.description?.message}
         {...register('description')}
