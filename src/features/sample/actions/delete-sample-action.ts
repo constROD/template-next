@@ -1,6 +1,6 @@
 'use server';
 
-import { deleteSampleData } from '@/data/sample/delete-sample';
+import { deleteSampleData } from '@/features/sample/data/delete-sample';
 import { redirect } from 'next/navigation';
 
 export async function deleteSampleAction(formData: FormData) {
