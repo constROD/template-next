@@ -1,5 +1,5 @@
 node_modules/
-
+.next/
 coverage/
 
 *-lock.json
@@ -9,3 +9,7 @@ coverage/
 .env
 .env.*
 .env-*
+
+**/data/core
+**/data/index.ts
+**/data/*.gen.ts

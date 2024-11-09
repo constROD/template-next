@@ -1,5 +1,5 @@
 node_modules/
-
+.next/
 coverage/
 
 *.config.js
@@ -14,3 +14,7 @@ coverage/
 .env
 .env.*
 .env-*
+
+**/data/core
+**/data/index.ts
+**/data/*.gen.ts
