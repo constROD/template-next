@@ -18,7 +18,7 @@
   - `src/app/<route-name>/_components` - for route page components.
   - `src/app/<route-name>/_actions` - for route page actions.
 
-### Features
+### Features (Modular Approach)
 
 - `src/features` - for feature modules. **(Only if needed)**
   - `src/features/<feature-name>` - for feature module.
