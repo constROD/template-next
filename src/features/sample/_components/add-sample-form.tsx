@@ -5,8 +5,8 @@ import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
-import { createSampleAction } from '../actions/create-sample-action';
-import { useSampleStore } from '../hooks/stores/use-sample-store';
+import { createSampleAction } from '../_actions/create-sample-action';
+import { useSampleStore } from '../_stores/use-sample-store';
 
 export const addSampleSchema = z.object({
   email: z.string().email().toLowerCase(),

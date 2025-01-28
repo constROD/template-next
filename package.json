@@ -24,7 +24,7 @@
     "format": "prettier --write '**/*.ts{,x}'",
     "check:types": "tsc",
     "check:spell": "git diff --name-only | npx cspell --no-summary --no-progress --no-must-find-files --file-list stdin",
-    "check:all": "concurrently \"pnpm lint\" \"pnpm check:spell\"",
+    "check:all": "concurrently \"pnpm lint\" \"pnpm check:types\" \"pnpm check:spell\"",
     "pre-commit": "concurrently \"lint-staged --allow-empty\" \"pnpm check:types\" \"pnpm check:spell\"",
     "prepare": "husky install"
   },

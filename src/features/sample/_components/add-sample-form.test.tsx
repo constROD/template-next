@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import * as createSampleActionModule from '../actions/create-sample-action';
+import * as createSampleActionModule from '../_actions/create-sample-action';
 import { AddSampleForm } from './add-sample-form';
 
 const renderComponentUnderTest = () => {

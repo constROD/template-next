@@ -1,6 +1,6 @@
 'use server';
 
-import { createSampleData, type CreateSampleDataArgs } from '@/features/sample/data/create-sample';
+import { createSampleData, type CreateSampleDataArgs } from '@/features/sample/_data/create-sample';
 import { redirect } from 'next/navigation';
 
 export async function createSampleAction(data: CreateSampleDataArgs) {
