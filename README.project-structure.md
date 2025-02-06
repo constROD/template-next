@@ -32,7 +32,7 @@
 - `src/components` - for shared components module.
   - `src/components/ui/*` - for ui components (`button`, `input` & etc).
 - `src/constants` - for shared constants module.
-- `src/contexts` - for shared react context api module.
+- `src/contexts` - for shared react context api.
 - `src/data` - for shared data access layer module. (e.g. `api`, `database`).
 - `src/hooks` - for shared custom hooks, tanstack query and mutation
   - `src/hooks/use-<hook-name>.ts` - for shared custom hook.
