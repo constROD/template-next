@@ -1,6 +1,6 @@
 'use client';
 
-import { useSamplesQuery } from '../_hooks/query/use-samples-query';
+import { useSamplesQuery } from '../_hooks/query/use-samples';
 
 export function SampleList() {
   const { data = [], isLoading, isFetching, error } = useSamplesQuery();
