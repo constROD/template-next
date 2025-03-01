@@ -5,15 +5,15 @@
 - Use `pnpm` for all package installations and management
 
 ## Core Libraries and Versions
-- Next.js: ^14.2.4
-- React: ^18.3.1
-- React DOM: ^18.3.1
-- TypeScript: ^5.6.3
-- Tailwind CSS: ^3.4.14
+- Next.js: ^14.x.x
+- React: ^18.x.x
+- React DOM: ^18.x.x
+- TypeScript: ^5.x.x
+- Tailwind CSS: ^3.x.x
 - shadcn/ui: Latest components
-- Zod: ^3.23.8
-- Tanstack Query: ^5.59.19
-- Zustand: ^4.5.5
+- Zod: ^3.x.x
+- Tanstack Query: ^5.x.x
+- Zustand: ^4.x.x
 
 ## Naming Conventions
 - `kebab-case` - for all folders/files
