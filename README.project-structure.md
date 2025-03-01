@@ -1,5 +1,4 @@
 # Project Structure & Code Organization
-# Cursor IDE Rules
 
 ## Package Manager
 - Use `pnpm` for all package installations and management
