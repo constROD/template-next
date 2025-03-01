@@ -1,6 +1,6 @@
 'use server';
 
-import { createProduct } from '@/data/product/create-product';
+import { createProductData } from '@/data/product/create-product';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
@@ -18,7 +18,7 @@ export async function addProductAction(_: unknown, formData: FormData) {
 
   if (!result.success) return result.error.formErrors.fieldErrors;
 
-  await createProduct(result.data);
+  await createProductData(result.data);
 
   redirect('/products');
 }

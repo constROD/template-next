@@ -1,6 +1,6 @@
 'use server';
 
-import { deleteProduct } from '@/data/product/delete-product';
+import { deleteProductData } from '@/data/product/delete-product';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
@@ -17,7 +17,7 @@ export async function deleteProductAction(_: unknown, formData: FormData) {
 
   if (!result.success) return result.error.formErrors.fieldErrors;
 
-  await deleteProduct(result.data.id);
+  await deleteProductData({ id: result.data.id });
 
   redirect('/products');
 }

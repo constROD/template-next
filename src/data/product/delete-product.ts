@@ -2,7 +2,11 @@ import { type DB } from '@/types/db';
 import { wait } from '@/utils/wait';
 import fs from 'fs/promises';
 
-export async function deleteProduct(id: string) {
+export type DeleteProductDataArgs = {
+  id: string;
+};
+
+export async function deleteProductData({ id }: DeleteProductDataArgs) {
   await wait(1000);
   const db = JSON.parse(await fs.readFile('db.json', 'utf-8')) as DB;
 

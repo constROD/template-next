@@ -3,12 +3,12 @@ import { type Product } from '@/types/product';
 import { wait } from '@/utils/wait';
 import fs from 'fs/promises';
 
-export type UpdateProductArgs = {
+export type UpdateProductDataArgs = {
   id: string;
   values: Partial<Omit<Product, 'id'>>;
 };
 
-export async function updateProduct(args: UpdateProductArgs) {
+export async function updateProductData(args: UpdateProductDataArgs) {
   await wait(1000);
   const db = JSON.parse(await fs.readFile('db.json', 'utf-8')) as DB;
 

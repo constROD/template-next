@@ -1,6 +1,6 @@
 'use server';
 
-import { updateProduct } from '@/data/product/update-product';
+import { updateProductData } from '@/data/product/update-product';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
@@ -23,7 +23,7 @@ export async function updateProductAction(_: unknown, formData: FormData) {
 
   const { id, ...updatedValues } = result.data;
 
-  await updateProduct({
+  await updateProductData({
     id,
     values: updatedValues,
   });

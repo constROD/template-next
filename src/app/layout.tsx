@@ -1,6 +1,6 @@
+import { Navbar } from '@/components/navbar';
 import type { Metadata } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
-import Link from 'next/link';
 import './globals.css';
 import Providers from './providers';
 
@@ -14,14 +14,14 @@ const fontInter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://bossrod.com'),
+  metadataBase: new URL('https://www.youtube.com/bossRODTV'),
   title: 'Template Next',
   description: 'Template Next by bossROD',
   openGraph: {
     title: 'Template Next',
     description: 'Template Next by bossROD',
     type: 'website',
-    url: 'https://bossrod.com',
+    url: 'https://www.youtube.com/bossRODTV',
     siteName: 'Template Next',
   },
   manifest: '/site.webmanifest',
@@ -62,21 +62,24 @@ export type RootLayoutProps = {
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <html lang="en">
-      <body className={`${fontMontserrat.variable} ${fontInter.variable}`}>
-        <div className="flex gap-5">
-          <Link href="/" className="font-inter text-xl underline">
-            Home
-          </Link>
-          <Link href="/sample" className="font-montserrat text-xl underline">
-            Sample (using TanStack React Query and Server Action)
-          </Link>
-          <Link href="/products" className="font-montserrat text-xl underline">
-            Products (using RSC and Server Action Only)
-          </Link>
-        </div>
-        <Providers>{children}</Providers>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${fontMontserrat.variable} ${fontInter.variable} min-h-screen bg-background`}
+      >
+        <Providers>
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="container mx-auto flex-1 py-6">{children}</main>
+            <footer className="border-t py-4">
+              <div className="container mx-auto text-center text-sm text-muted-foreground">
+                &copy; {currentYear} Template Next by bossROD. All rights reserved.
+              </div>
+            </footer>
+          </div>
+        </Providers>
       </body>
     </html>
   );
