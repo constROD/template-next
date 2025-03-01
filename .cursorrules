@@ -1,0 +1,89 @@
+# Cursor IDE Rules
+
+## Package Manager
+- Use `pnpm` for all package installations and management
+
+## Core Libraries and Versions
+- Next.js: ^14.0.0
+- React: ^18.2.0
+- React DOM: ^18.2.0
+- TypeScript: ^5.2.2
+- Tailwind CSS: ^3.3.0
+- shadcn/ui: Latest components
+- Zod: ^3.22.4
+- React Hook Form: ^7.49.2
+- Lucide React: ^0.298.0
+- Tanstack Query: ^5.14.0
+- Zustand: ^4.4.7
+- clsx: ^2.0.0
+- tailwind-merge: ^2.1.0
+
+## Naming Conventions
+- `kebab-case` - for all folders/files
+- `_kebab-case` - for feature and route domain's specific common modules
+- `PascalCase` - for classes and types
+- `snake_case` - for database tables and columns
+- `camelCase` - for functions, zod schemas and etc.
+
+## Default Structure (Routes Domain)
+When creating new page/route files, follow this structure:
+
+```src/app/<route-name>/
+├── index.tsx               # Route's entry point
+├── _actions/               # Route's actions (only if necessary)
+├── _components/            # Route's components
+├── _constants/             # Route's constants
+├── _contexts/              # Route's react context API
+├── _hooks/                 # Route's hooks
+├── _types/                 # Route's types
+└── _utils/                 # Route's utilities
+```
+
+## Feature Domain Structure (Only when explicitly requested)
+When creating new feature files (only when explicitly requested), follow this structure:
+
+```
+src/features/<feature-name>/
+├── index.ts                # Feature's entry point
+├── _actions/               # Feature's actions (only if necessary)
+├── _assets/                # Feature's assets (only if necessary)
+├── _components/            # Feature's components
+├── _constants/             # Feature's constants
+├── _contexts/              # Feature's react context API
+├── _data/                  # Feature's data access layer (only if necessary)
+├── _hooks/                 # Feature's hooks (only if necessary)
+├── _lib/                   # Feature's 3rd party integrations (only if necessary)
+├── _services/              # Feature's business logic (only if necessary)
+├── _stores/                # Feature's state stores (e.g., zustand)
+├── _types/                 # Feature's types
+└── _utils/                 # Feature's utilities
+```
+
+## Common Modules
+Shared modules follow this structure:
+
+```
+src/
+├── actions/                # Shared actions (only if necessary)
+├── assets/                 # Shared assets
+├── components/             # Shared dumb components
+│   └── ui/                 # UI components (button, input, etc.)
+├── constants/              # Shared constants
+├── contexts/               # Shared react context API
+├── data/                   # Shared data access layer (API, database)
+├── hooks/                  # Shared custom hooks
+│   └── query/              # React-query hooks (only if necessary)
+├── lib/                    # Shared 3rd party integrations
+├── services/               # Shared business logic (only if necessary)
+├── stores/                 # Shared state stores (e.g., zustand)
+├── types/                  # Shared types
+└── utils/                  # Shared utilities
+``` 
+
+## UI Components with shadcn/ui
+When using shadcn/ui components:
+- All UI components should be installed in `src/components/ui/`
+- Follow the official shadcn/ui installation instructions
+- Use the CLI: `pnpm dlx shadcn-ui@latest add <component-name>`
+- When creating custom variants, define them in `src/lib/utils.ts` with the `cn` utility
+- Customize the default themes in `src/app/globals.css` 
