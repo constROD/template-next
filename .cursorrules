@@ -11,12 +11,9 @@
 - Tailwind CSS: ^3.3.0
 - shadcn/ui: Latest components
 - Zod: ^3.22.4
-- React Hook Form: ^7.49.2
-- Lucide React: ^0.298.0
 - Tanstack Query: ^5.14.0
 - Zustand: ^4.4.7
-- clsx: ^2.0.0
-- tailwind-merge: ^2.1.0
+
 
 ## Naming Conventions
 - `kebab-case` - for all folders/files
