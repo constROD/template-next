@@ -22,6 +22,7 @@
 - `camelCase` - for functions, zod schemas and etc.
 
 ## Common Modules
+- `actions` - for server actions **(Only if necessary)**
 - `assets` - for assets
 - `components` - for components
 - `constants` - for constants
@@ -69,12 +70,13 @@ When creating new page/route files, follow this structure:
 src/app/<route-name>/
 ├── page.tsx                # Route's entry point
 ├── layout.tsx              # Route's layout (if needed)
-├── -components/            # Route's components
-├── -constants/             # Route's constants
-├── -contexts/              # Route's react context API
-├── -hooks/                 # Route's hooks
-├── -types/                 # Route's types
-└── -utils/                 # Route's utilities
+├── _actions/               # Route's server actions (only if necessary)
+├── _components/            # Route's components
+├── _constants/             # Route's constants
+├── _contexts/              # Route's react context API
+├── _hooks/                 # Route's hooks
+├── _types/                 # Route's types
+└── _utils/                 # Route's utilities
 ```
 
 ## Feature Domain Structure - Optional
@@ -83,6 +85,7 @@ When creating new feature files, follow this structure:
 ```
 src/features/<feature-name>/
 ├── index.ts                # Feature's entry point
+├── _actions/               # Feature's server actions (only if necessary)
 ├── _assets/                # Feature's assets (only if necessary)
 ├── _components/            # Feature's components
 ├── _constants/             # Feature's constants
